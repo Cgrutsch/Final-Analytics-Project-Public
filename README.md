@@ -109,6 +109,8 @@ print(f"The most common occurring sponsor is: {sponsor_mode}")
   
   
   
+  
+  
 mean_value = nil['Value'].loc[nil['Value'] != 'NaN'].astype(float).mean()
 print("Mean Value:", mean_value)
 
