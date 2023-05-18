@@ -101,13 +101,17 @@ print(nil)
 ![1](https://github.com/Cgrutsch/Data-Analytics-Project/assets/123528826/5165bb13-b8ac-42d3-947a-53e4f19ff809)
 
 
+
 sponsor_mode = nil['Sponsor Name'].mode()[0]
 print(f"The most common occurring sponsor is: {sponsor_mode}")
+
   The most common occurring sponsor is: Barstool Sports
+  
   
   
 mean_value = nil['Value'].loc[nil['Value'] != 'NaN'].astype(float).mean()
 print("Mean Value:", mean_value)
+
   Mean Value: 1916.0
   
 # Query to search the dataFrame by athlete name
