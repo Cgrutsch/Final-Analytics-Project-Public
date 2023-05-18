@@ -1,6 +1,6 @@
-# Final-Analytics-Project-Public
+# Final Analytics Project
 
-# import statements
+# Import statements
 import requests
 
 from bs4 import BeautifulSoup
@@ -12,7 +12,8 @@ import pandas as pd
 import numpy as np
 
 
-# Create empty lists to store athlete, sponsor, school, sport names, and values
+# Create empty lists to store athlete, sponsor, school, sport names,values and social media links
+
 athlete_names = []
 sponsor_names = []
 school_names = []
