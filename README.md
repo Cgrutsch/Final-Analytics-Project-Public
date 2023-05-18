@@ -121,8 +121,8 @@ athlete_search = input("Enter athlete name: ")
 athlete_data = nil[nil['Athlete Name'].str.contains(athlete_search, case=False)]
 print(athlete_data)
    Enter athlete name: JR Smith
-   Athlete Name             Sponsor Name      School                                            Sport   Value    Instagram page                         Twitter page    
-15     JR Smith  Excel Sports Management   north carolina agricultural and technical stat...    Golf     NaN   https://instagram.com/teamswish  https://twitter.com/@TheRealJRSmith  
+   
+![2](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/cb59b067-c0ce-41ef-8784-547a5e27c971)
 
 
 # Query to serach the dataFrame by school
