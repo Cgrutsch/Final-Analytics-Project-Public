@@ -1,4 +1,5 @@
-# Final Analytics Project
+# Final Analytics Project - NIL College Athletes
+
 
 # Import statements
 import requests
