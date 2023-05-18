@@ -143,7 +143,7 @@ print(sponsor_data)
 
 Enter sponsor name: Gatorade
   
-![4](https://github.com/Cgrutsch/Data-Analytics-Project/assets/123528826/cc7235c6-1a1b-4008-a390-25a9127de99c)
+![4](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/536ee8d9-4a26-4e76-8323-1fa296a09559)
 
 
 # Query to search the dataFrame by sport
