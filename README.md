@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 
 
-# Create empty lists to store athlete, sponsor, school, sport names,values and social media links
+# Create empty lists to store athlete, sponsor, school, sport names, values and social media links
 
 athlete_names = []
 sponsor_names = []
@@ -33,7 +33,7 @@ for i in range(1, 11):
     # Find all the li tags with similar scraped data
     li_tags = soup.find_all('li', {'class': 'relative pl-0 pr-6 py-5 hover:bg-gray-50 sm:py-6'})
 
-    # Loop through the <li> tags to find athlete, sponsor, school, sport, and details link names
+    # Loop through the <li> tags to find athlete, sponsor, school, sport, and social media links 
     for li in li_tags:
         find_athlete = li.find('a', href=re.compile('/athletes/([\w-]+)'))
         find_sponsor = li.find('a', href=re.compile('/sponsors/|/agencies/'))
@@ -93,7 +93,7 @@ for i in range(1, 11):
         twitter_links.append(twitter_link)
 
 
-# Create a DataFrame with athlete, sponsor, school, sport names, and values
+# Create a DataFrame with athlete, sponsor, school, sport names, values and social media
 nil = pd.DataFrame({'Athlete Name': athlete_names, 'Sponsor Name': sponsor_names, 'School': school_names, 'Sport': sport_names, 'Value': values, 'Instagram page': instagram_links, 'Twitter page': twitter_links})
 
 
@@ -132,7 +132,7 @@ school_search = input("Enter school name: ")
 school_data = nil[nil['School'].str.contains(school_search, case=False)]
 print(school_data)
 
-Enter School Name: University of Nebraska Omha
+Enter School Name: University of Nebraska Omaha
 
 ![3](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/2333266e-57b3-45be-964b-2792e959017b)
 
