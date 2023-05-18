@@ -130,8 +130,8 @@ school_search = input("Enter school name: ")
 school_data = nil[nil['School'].str.contains(school_search, case=False)]
 print(school_data)
    Enter School Name: University of Nebraska Omha
-     Athlete Name     Sponsor Name                        School       Sport  Value    Instagram page                      Twitter Page
-129  Brock Bremer  Barstool Sports  university of nebraska omaha  Ice Hockey   NaN   htps://instagram.com/brock.bremer     https://twitter.com/@bremer_brock  
+
+![3](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/2333266e-57b3-45be-964b-2792e959017b)
 
 
 # Query to search the dataFrame by sponsor
