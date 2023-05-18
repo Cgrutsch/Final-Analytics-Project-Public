@@ -121,7 +121,7 @@ athlete_search = input("Enter athlete name: ")
 athlete_data = nil[nil['Athlete Name'].str.contains(athlete_search, case=False)]
 print(athlete_data)
 
-   Enter athlete name: JR Smith
+Enter athlete name: JR Smith
    
 ![2](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/cb59b067-c0ce-41ef-8784-547a5e27c971)
 
@@ -131,7 +131,7 @@ school_search = input("Enter school name: ")
 school_data = nil[nil['School'].str.contains(school_search, case=False)]
 print(school_data)
 
-   Enter School Name: University of Nebraska Omha
+Enter School Name: University of Nebraska Omha
 
 ![3](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/2333266e-57b3-45be-964b-2792e959017b)
 
@@ -141,7 +141,7 @@ sponsor_search = input("Enter sponsor name: ")
 sponsor_data = nil[nil['Sponsor Name'].str.contains(sponsor_search, case=False)]
 print(sponsor_data)
 
-  Enter sponsor name: Gatorade
+Enter sponsor name: Gatorade
   
 ![4](https://github.com/Cgrutsch/Data-Analytics-Project/assets/123528826/cc7235c6-1a1b-4008-a390-25a9127de99c)
 
@@ -150,16 +150,10 @@ print(sponsor_data)
 sport_search = input("Enter sport name: ")
 sport_data = nil[nil['Sport'].str.contains(sport_search, case=False)]
 print(sport_data)
-  Enter sport name: Golf
-             Athlete Name             Sponsor Name  School                                              Sport      Value            Instagram page                         Twitter page
-15               JR Smith  Excel Sports Management  north carolina agricultural and technical stat...   Golf       NaN        https://instagram.com/teamswish      https://twitter.com/@TheRealJRSmith
-31   Michael Thorbjornsen  Excel Sports Management  stanford university                                 Golf       NaN        https://instagram.com/michaelt_1                                    None
-37          Ollie Osborne                PING Golf  southern methodist university                       Golf       NaN        https://instagram.com/_ollieosborne_                                None
-38            Rachel Heck                PING Golf  stanford university                                 Golf       NaN        https://instagram.com/_rachelheck_                                  None
-48            Rachel Heck  Excel Sports Management  stanford university                                 Golf       NaN        https://instagram.com/_rachelheck_                                  None
-98        Alberto Menacho          Barstool Sports  university of texas at arlington                    Golf       NaN        https://instagram.com/Amenacho01           https://twitter.com/@AMN15191
-99            Jack Lawlor          Barstool Sports  jacksonville university                             Golf       NaN        https://instagram.com/jacklawlor33                                  None
-100            Joey Moore          Barstool Sports  san diego state university                          Golf       NaN        https://instagram.com/Jmoo__             https://twitter.com/@jmoore1524
+
+Enter sport name: Golf
+  
+![5](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/35b05f9f-a0c9-45c9-8371-ac91d5dea655)
 
 
 # Import the Plotly express module to allow for figures to be generated 
