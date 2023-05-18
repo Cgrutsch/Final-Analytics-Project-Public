@@ -139,9 +139,8 @@ sponsor_search = input("Enter sponsor name: ")
 sponsor_data = nil[nil['Sponsor Name'].str.contains(sponsor_search, case=False)]
 print(sponsor_data)
   Enter sponsor name: Gatorade
-       Athlete Name Sponsor Name                     School       Sport Value   Instagram page                         Twitter page  
-28  Shedeur Sanders     Gatorade   jackson state university    Football   NaN   https://instagram.com/shedeursanders  https://twitter.com/@ShedeurSanders 
-43   Paige Bueckers     Gatorade  university of connecticut  Basketball   NaN     None                                 None 
+
+![5](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/88026f64-7b02-4912-85a5-26e8947968e1)
 
 
 # Query to search the dataFrame by sport
