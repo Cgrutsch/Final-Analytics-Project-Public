@@ -1,1 +1,185 @@
 # Final-Analytics-Project-Public
+
+# import statements
+import requests
+
+from bs4 import BeautifulSoup
+
+import re
+
+import pandas as pd
+
+import numpy as np
+
+
+# Create empty lists to store athlete, sponsor, school, sport names, and values
+athlete_names = []
+sponsor_names = []
+school_names = []
+sport_names = []
+values = []
+instagram_links = []
+twitter_links = []
+
+
+# Loop through the first 10 pages of the website and scrape athlete, sponsor, school, sport, and details link names.
+# Range may be changed to scrape additional pages, up to 541.
+for i in range(1, 11):
+    url = f"https://nilcollegeathletes.com/deals?page={i}"
+    html = requests.get(url)
+    soup = BeautifulSoup(html.content, 'html.parser')
+
+    # Find all the li tags with similar scraped data
+    li_tags = soup.find_all('li', {'class': 'relative pl-0 pr-6 py-5 hover:bg-gray-50 sm:py-6'})
+
+    # Loop through the <li> tags to find athlete, sponsor, school, sport, and details link names
+    for li in li_tags:
+        find_athlete = li.find('a', href=re.compile('/athletes/([\w-]+)'))
+        find_sponsor = li.find('a', href=re.compile('/sponsors/|/agencies/'))
+        find_school = li.find('a', href=re.compile('/universities/'))
+        find_sport = li.find('div', {'class': 'flex text-gray-500 text-sm space-x-2'})
+        find_details = li.find('a', {'class': 'relative text-sm text-gray-500 hover:text-gray-900 font-medium'})
+
+        if find_athlete is not None:
+            athlete_url = 'https://nilcollegeathletes.com' + find_athlete['href']
+            athlete_html = requests.get(athlete_url)
+            athlete_soup = BeautifulSoup(athlete_html.content, 'html.parser')
+            instagram_link = athlete_soup.find('a', href=re.compile('instagram.com/'))
+            instagram_link = instagram_link.get('href') if instagram_link is not None else 'None'
+            twitter_link = athlete_soup.find('a', href=re.compile('twitter.com/'))
+            twitter_link = twitter_link.get('href') if twitter_link is not None else 'None'
+        else:
+            instagram_link = 'None'
+            twitter_link = 'None'
+
+        if find_sponsor is not None:
+            sponsor_name = find_sponsor.text.strip()
+        else:
+            sponsor_name = 'None'
+
+        if find_school is not None:
+            school_name = re.findall(r'/universities/([^"]+)', str(find_school))[0]
+            school_name = school_name.replace('-', ' ') # Replace the - symbols with spaces
+        else:
+            school_name = 'None'
+
+        if find_sport is not None:
+            sport_name = find_sport.find_all('span')[-1].text.strip()
+        else:
+            sport_name = 'None'
+
+        value = np.nan  # Define value outside of the conditional block
+
+        if find_details is not None:
+            details = 'https://nilcollegeathletes.com' + find_details['href']
+            # Follow the link in details and scrape the value
+            html = requests.get(details)
+            soup = BeautifulSoup(html.content, 'html.parser')
+            value_tag = soup.find('dt', string='Value')
+            if value_tag is not None:
+                value = value_tag.find_next_sibling('dd').text.strip()
+                value = re.findall(r'\$?\d[\d,.]*', value)
+                value = value[0].replace(',', '').replace('$', '') if len(value) > 0 else 'NaN'
+        else:
+            value = 'NaN'
+
+        athlete_names.append(find_athlete.text.strip())
+        sponsor_names.append(sponsor_name)
+        school_names.append(school_name)
+        sport_names.append(sport_name)
+        values.append(value)
+        instagram_links.append(instagram_link)
+        twitter_links.append(twitter_link)
+
+
+# Create a DataFrame with athlete, sponsor, school, sport names, and values
+nil = pd.DataFrame({'Athlete Name': athlete_names, 'Sponsor Name': sponsor_names, 'School': school_names, 'Sport': sport_names, 'Value': values, 'Instagram page': instagram_links, 'Twitter page': twitter_links})
+
+
+print(nil)
+
+
+        Athlete Name             Sponsor Name                           School          Sport Value                            Instagram page                          Twitter page
+0          Zia Cooke  Excel Sports Management     university of south carolina     Basketball   NaN          https://instagram.com/z.loading_                                  None
+1     Jashon Hubbard              Liquid I.V.        the ohio state university      Wrestling  1000       https://instagram.com/jashonhubbard   https://twitter.com/@jashon_hubbard
+2       Carter Young      Student-Athlete Inu            vanderbilt university       Baseball   NaN                                      None                                  None
+3        Jordan Beam              Liquid I.V.         georgia state university         Soccer   NaN                                      None                                  None
+4     Bijan Robinson            Raising Canes    university of texas at austin       Football   NaN                                      None                                  None
+..               ...                      ...                              ...            ...   ...                                       ...                                   ...
+145    Cole Peterson          Barstool Sports                merrimack college       Football   NaN    https://instagram.com/Cole.peterson_18          https://twitter.com/@Cole_P3
+146  Alexis Williams          Barstool Sports      university of south florida     Volleyball   NaN   https://instagram.com/alexiss.williamss     https://twitter.com/@vballalexiss
+147  Connor Campbell          Barstool Sports  university of california irvine     Volleyball   NaN  https://instagram.com/Connor_Campbell_mb                                  None
+148    Devin Aguilar          Barstool Sports                butler university       Football   NaN     https://instagram.com/aguilar_island1  https://twitter.com/@Aguilar_Island8
+149      Sam Shaylor          Barstool Sports              lipscomb university  Cross Country   NaN          https://instagram.com/shaylorsam       https://twitter.com/@ShaylorSam
+
+[150 rows x 7 columns]
+
+
+sponsor_mode = nil['Sponsor Name'].mode()[0]
+print(f"The most common occurring sponsor is: {sponsor_mode}")
+  The most common occurring sponsor is: Barstool Sports
+  
+  
+mean_value = nil['Value'].loc[nil['Value'] != 'NaN'].astype(float).mean()
+print("Mean Value:", mean_value)
+  Mean Value: 1916.0
+  
+# Query to search the dataFrame by athlete name
+athlete_search = input("Enter athlete name: ")
+athlete_data = nil[nil['Athlete Name'].str.contains(athlete_search, case=False)]
+print(athlete_data)
+   Enter athlete name: JR Smith
+   Athlete Name             Sponsor Name      School                                            Sport   Value    Instagram page                         Twitter page    
+15     JR Smith  Excel Sports Management   north carolina agricultural and technical stat...    Golf     NaN   https://instagram.com/teamswish  https://twitter.com/@TheRealJRSmith  
+
+
+# Query to serach the dataFrame by school
+school_search = input("Enter school name: ")
+school_data = nil[nil['School'].str.contains(school_search, case=False)]
+print(school_data)
+   Enter School Name: University of Nebraska Omha
+     Athlete Name     Sponsor Name                        School       Sport  Value    Instagram page                      Twitter Page
+129  Brock Bremer  Barstool Sports  university of nebraska omaha  Ice Hockey   NaN   htps://instagram.com/brock.bremer     https://twitter.com/@bremer_brock  
+
+
+# Query to search the dataFrame by sponsor
+sponsor_search = input("Enter sponsor name: ")
+sponsor_data = nil[nil['Sponsor Name'].str.contains(sponsor_search, case=False)]
+print(sponsor_data)
+  Enter sponsor name: Gatorade
+       Athlete Name Sponsor Name                     School       Sport Value   Instagram page                         Twitter page  
+28  Shedeur Sanders     Gatorade   jackson state university    Football   NaN   https://instagram.com/shedeursanders  https://twitter.com/@ShedeurSanders 
+43   Paige Bueckers     Gatorade  university of connecticut  Basketball   NaN     None                                 None 
+
+
+# Query to search the dataFrame by sport
+sport_search = input("Enter sport name: ")
+sport_data = nil[nil['Sport'].str.contains(sport_search, case=False)]
+print(sport_data)
+  Enter sport name: Golf
+             Athlete Name             Sponsor Name  School                                              Sport      Value            Instagram page                         Twitter page
+15               JR Smith  Excel Sports Management  north carolina agricultural and technical stat...   Golf       NaN        https://instagram.com/teamswish      https://twitter.com/@TheRealJRSmith
+31   Michael Thorbjornsen  Excel Sports Management  stanford university                                 Golf       NaN        https://instagram.com/michaelt_1                                    None
+37          Ollie Osborne                PING Golf  southern methodist university                       Golf       NaN        https://instagram.com/_ollieosborne_                                None
+38            Rachel Heck                PING Golf  stanford university                                 Golf       NaN        https://instagram.com/_rachelheck_                                  None
+48            Rachel Heck  Excel Sports Management  stanford university                                 Golf       NaN        https://instagram.com/_rachelheck_                                  None
+98        Alberto Menacho          Barstool Sports  university of texas at arlington                    Golf       NaN        https://instagram.com/Amenacho01           https://twitter.com/@AMN15191
+99            Jack Lawlor          Barstool Sports  jacksonville university                             Golf       NaN        https://instagram.com/jacklawlor33                                  None
+100            Joey Moore          Barstool Sports  san diego state university                          Golf       NaN        https://instagram.com/Jmoo__             https://twitter.com/@jmoore1524
+
+
+# Import the Plotly express module to allow for figures to be generated 
+import plotly.express as px
+
+
+# Group by sport and count the number of occurrences
+sport_count = nil.groupby('Sport').size().reset_index(name='Counts')
+
+
+fig = px.pie(sport_count, values='Counts', names='Sport', title='NIL Deals by Sport')
+
+
+fig.show()
+
+
+![NIL Deal by Sport Figure-1](https://github.com/Cgrutsch/Data-Analytics-Project/assets/123528826/503974ad-eee6-4e19-a1fb-ffd493f632ae)
