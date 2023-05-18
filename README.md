@@ -170,4 +170,4 @@ fig = px.pie(sport_count, values='Counts', names='Sport', title='NIL Deals by Sp
 fig.show()
 
 
-![NIL Deal by Sport Figure-1](https://github.com/Cgrutsch/Data-Analytics-Project/assets/123528826/503974ad-eee6-4e19-a1fb-ffd493f632ae)
+![6](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/4d33e994-a020-4d45-8bda-3ccd6b7ab4c0)
