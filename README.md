@@ -120,6 +120,7 @@ print("Mean Value:", mean_value)
 athlete_search = input("Enter athlete name: ")
 athlete_data = nil[nil['Athlete Name'].str.contains(athlete_search, case=False)]
 print(athlete_data)
+
    Enter athlete name: JR Smith
    
 ![2](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/cb59b067-c0ce-41ef-8784-547a5e27c971)
@@ -129,6 +130,7 @@ print(athlete_data)
 school_search = input("Enter school name: ")
 school_data = nil[nil['School'].str.contains(school_search, case=False)]
 print(school_data)
+
    Enter School Name: University of Nebraska Omha
 
 ![3](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/2333266e-57b3-45be-964b-2792e959017b)
@@ -138,9 +140,10 @@ print(school_data)
 sponsor_search = input("Enter sponsor name: ")
 sponsor_data = nil[nil['Sponsor Name'].str.contains(sponsor_search, case=False)]
 print(sponsor_data)
-  Enter sponsor name: Gatorade
 
-![5](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/88026f64-7b02-4912-85a5-26e8947968e1)
+  Enter sponsor name: Gatorade
+  
+![4](https://github.com/Cgrutsch/Data-Analytics-Project/assets/123528826/cc7235c6-1a1b-4008-a390-25a9127de99c)
 
 
 # Query to search the dataFrame by sport
