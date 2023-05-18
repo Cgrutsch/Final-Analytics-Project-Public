@@ -98,21 +98,7 @@ nil = pd.DataFrame({'Athlete Name': athlete_names, 'Sponsor Name': sponsor_names
 
 print(nil)
 
-
-        Athlete Name             Sponsor Name                           School          Sport Value                            Instagram page                          Twitter page
-0          Zia Cooke  Excel Sports Management     university of south carolina     Basketball   NaN          https://instagram.com/z.loading_                                  None
-1     Jashon Hubbard              Liquid I.V.        the ohio state university      Wrestling  1000       https://instagram.com/jashonhubbard   https://twitter.com/@jashon_hubbard
-2       Carter Young      Student-Athlete Inu            vanderbilt university       Baseball   NaN                                      None                                  None
-3        Jordan Beam              Liquid I.V.         georgia state university         Soccer   NaN                                      None                                  None
-4     Bijan Robinson            Raising Canes    university of texas at austin       Football   NaN                                      None                                  None
-..               ...                      ...                              ...            ...   ...                                       ...                                   ...
-145    Cole Peterson          Barstool Sports                merrimack college       Football   NaN    https://instagram.com/Cole.peterson_18          https://twitter.com/@Cole_P3
-146  Alexis Williams          Barstool Sports      university of south florida     Volleyball   NaN   https://instagram.com/alexiss.williamss     https://twitter.com/@vballalexiss
-147  Connor Campbell          Barstool Sports  university of california irvine     Volleyball   NaN  https://instagram.com/Connor_Campbell_mb                                  None
-148    Devin Aguilar          Barstool Sports                butler university       Football   NaN     https://instagram.com/aguilar_island1  https://twitter.com/@Aguilar_Island8
-149      Sam Shaylor          Barstool Sports              lipscomb university  Cross Country   NaN          https://instagram.com/shaylorsam       https://twitter.com/@ShaylorSam
-
-[150 rows x 7 columns]
+![1](https://github.com/Cgrutsch/Data-Analytics-Project/assets/123528826/5165bb13-b8ac-42d3-947a-53e4f19ff809)
 
 
 sponsor_mode = nil['Sponsor Name'].mode()[0]
