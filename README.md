@@ -98,7 +98,7 @@ nil = pd.DataFrame({'Athlete Name': athlete_names, 'Sponsor Name': sponsor_names
 
 print(nil)
 
-![1](https://github.com/Cgrutsch/Data-Analytics-Project/assets/123528826/5165bb13-b8ac-42d3-947a-53e4f19ff809)
+![1](https://github.com/Cgrutsch/Final-Analytics-Project-Public/assets/123528826/e4149d28-d1ad-4925-a526-145b208df3ad)
 
 
 
