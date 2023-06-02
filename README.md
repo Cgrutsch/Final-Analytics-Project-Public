@@ -1,4 +1,4 @@
-# NIL College Athletes webscrape
+# NIL College Athletes Webscrape
 
 
 # Import statements
