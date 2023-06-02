@@ -1,4 +1,4 @@
-# Final Analytics Project - NIL College Athletes
+# NIL College Athletes webscrape
 
 
 # Import statements
