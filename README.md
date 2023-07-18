@@ -1,7 +1,7 @@
 # NIL College Athletes Web Scrape
 
 
-# Import statements
+# Import statements (Requests, BeautifulSoup, regular expression, pandas and numpy)
 import requests
 
 from bs4 import BeautifulSoup
